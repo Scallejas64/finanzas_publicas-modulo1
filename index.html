@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finanzas Públicas · Módulo 1: guía de estudio</title>
+<style>
+:root{--bg:#F3F6F4;--card:#fff;--ink:#14241E;--mut:#53665E;--line:#D2DDD7;--acc:#0E7A5F;--accs:#DDF3EC;--hi:#FFE9A8;--ok:#1B7A43;--bad:#B3261E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1713;--card:#15231D;--ink:#E5F0EA;--mut:#9DB5AA;--line:#27403A;--acc:#6FD3B0;--accs:#123A2E;--hi:#4A3D12;--ok:#62D486;--bad:#FF8077}}
+:root[data-theme="dark"]{--bg:#0E1713;--card:#15231D;--ink:#E5F0EA;--mut:#9DB5AA;--line:#27403A;--acc:#6FD3B0;--accs:#123A2E;--hi:#4A3D12;--ok:#62D486;--bad:#FF8077}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-1;opacity:.35;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:26px 26px}
+h1,h2,h3{font-family:Palatino,"Iowan Old Style",Georgia,serif;line-height:1.2;margin:0}
+.w{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 12px}h1{font-size:2rem}header p{color:var(--mut);margin:6px 0 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+#tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;max-width:760px;margin:0 auto}
+#tabs button,.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer}
+#tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.chips button{padding:5px 11px;font-size:.85rem}
+.chips button[aria-pressed=true]{background:var(--accs);border-color:var(--acc);color:var(--acc);font-weight:600}
+:root[data-theme=dark] #tabs button[aria-selected=true],:root[data-theme=dark] .btn{color:#0E1713}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) #tabs button[aria-selected=true],:root:not([data-theme=light]) .btn{color:#0E1713}}
+main{padding:20px 0 60px}section[hidden]{display:none}
+h2{font-size:1.5rem;margin-bottom:10px}h3{font-size:1.1rem;margin:20px 0 8px}
+p{margin:0 0 12px}ul{margin:0 0 12px;padding-left:20px}li{margin-bottom:4px}
+.lead{font-family:Palatino,Georgia,serif;font-size:1.2rem;border-left:4px solid var(--acc);padding-left:14px;margin:14px 0}
+.note{background:var(--hi);border-radius:8px;padding:10px 14px;margin:14px 0;font-size:.95rem}
+.cs{background:var(--accs);border-left:4px solid var(--acc);border-radius:8px;padding:10px 14px;margin:14px 0;font-size:.95rem}.cs b:first-child{color:var(--acc)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+summary{cursor:pointer;padding:10px 14px;font-weight:600}details>*:not(summary){margin:0;padding:0 14px 12px}details[open] summary{color:var(--acc)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.calc label{display:block;font-size:.9rem;color:var(--mut);margin-bottom:10px}
+.calc input,select{display:block;width:100%;max-width:220px;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.res{font-family:Palatino,Georgia,serif;font-size:1.4rem;margin:6px 0}.ledger{border-top:2px solid var(--ink);margin-top:10px;padding-top:8px;font-size:.95rem;color:var(--mut)}
+.bad{color:var(--bad)}.ok{color:var(--ok)}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap}.row select{max-width:190px}
+.q button.o{display:block;width:100%;text-align:left;margin-top:8px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.q button.o.good{border-color:var(--ok);background:var(--accs)}.q button.o.wrong{border-color:var(--bad)}
+.btn{margin-top:12px;padding:9px 16px;border:0;border-radius:8px;background:var(--acc);color:#fff;font:inherit;cursor:pointer}
+.rd{margin-bottom:12px}.rd small{display:block;color:var(--mut)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}footer{color:var(--mut);font-size:.85rem;padding-bottom:30px}
+</style></head><body>
+<header><div class="w"><h1>Finanzas Públicas · Módulo 1</h1><p>Gestión de ingresos y gastos. Guía interactiva de estudio basada en el módulo de Gutiérrez López (2021), con ampliaciones para entender mejor.</p></div></header>
+<nav><div id="tabs" role="tablist"></div></nav>
+<main class="w">
+
+<section id="panorama"><h2>Panorama</h2>
+<p class="lead">Las finanzas públicas estudian la economía del sector público: qué hace el Estado en la economía y con qué recursos lo financia.</p>
+<p>El módulo parte de dos preguntas: <b>¿qué debe hacer el gobierno?</b> y <b>¿qué reglas deben guiarlo?</b> Cada autor que verás responde una parte. Son la rama más antigua de la economía y se construyeron con aportes de grandes pensadores generales, no solo de especialistas.</p>
+<h3>Por qué interviene el Estado</h3><div id="p1"></div>
+<h3>Las tres funciones (Musgrave)</h3><div id="p2"></div>
+<div class='cs'><b>Caso: las tres funciones en Villa Esperanza.</b> Construir y dotar el colegio es <b>asignación</b>: el mercado no lo ofrece en zonas pobres. Un subsidio para familias con necesidades básicas insatisfechas es <b>distribución</b>. Contratar obras públicas cuando el comercio local se frena por una crisis es <b>estabilización</b>. Una misma decisión puede cumplir varias funciones a la vez.</div>
+<h3>Ruta del módulo</h3>
+<ul><li><b>1. Pensamiento económico:</b> de Hume y Smith a Pigou, Samuelson y Musgrave.</li><li><b>2. Ingresos y tributación:</b> tributos, ingresos territoriales y Sistema General de Participaciones.</li><li><b>3. Gasto:</b> funcionamiento, inversión, deuda y redistribución.</li></ul>
+<div class="cs"><b>Caso: Villa Esperanza.</b> Usaremos este municipio ficticio en toda la guía. Su alcalde tiene recursos limitados y debe decidir si pavimenta una vía o amplía el colegio. Esa elección, bajo escasez, es el problema central de las finanzas públicas.</div>
+</section>
+
+<section id="pensadores" hidden><h2>Pensadores y escuelas</h2>
+<p>Toca un autor. Cada uno responde a una de las preguntas del módulo.</p>
+<div class="chips" id="ch"></div><div class="box" id="au" aria-live="polite"></div>
+<div class="note"><b>Cómo estudiarlos:</b> pregúntate de cada autor, ¿qué dice del Estado?, ¿cómo se debe cobrar? y ¿cómo se debe gastar? Con eso evitas memorizar nombres sueltos.</div>
+</section>
+
+<section id="equidad" hidden><h2>Equidad y eficiencia en los impuestos</h2>
+<h3>Dos principios de justicia</h3><div id="e1"></div>
+<h3>La regla del sacrificio (Edgeworth, Pigou, Musgrave)</h3><p>Mide cuánto «le duele» pagar a cada contribuyente, en pérdida de utilidad.</p><div id="e2"></div>
+<div class='cs'><b>Caso: ¿qué regla de sacrificio elegir?</b> Un impuesto de $1 M le quita a una familia con ingreso de $2 M un bienestar que no recupera fácilmente (quizá deje de pagar el arriendo), mientras que a una con ingreso de $10 M le quita gastos prescindibles. Como un peso adicional vale menos para quien más tiene, el sacrificio marginal igual lleva a que el rico aporte una proporción mayor. Por eso Edgeworth y Pigou lo prefirieron. La crítica: medir la utilidad de cada persona es imposible en la práctica, y por eso hoy se usa el ingreso como aproximación.</div>
+<h3>Eficiencia según Smith</h3><div id="e3"></div>
+<h3>Progresivo, proporcional y regresivo</h3><div id="e4"></div>
+<h3>Practica: impuesto progresivo por tramos</h3>
+<div class="box calc"><label>Ingreso mensual<input id="gi" type="number" value="8000000"></label><div class="res" id="go"></div><div class="ledger" id="gl"></div></div>
+<p>Tramos ilustrativos (no son los de la ley): hasta $2 M, 0 %; de $2 M a $5 M, 10 %; de $5 M a $10 M, 20 %; más de $10 M, 30 %.</p>
+<div class="cs"><b>Caso: con $8.000.000 se pagan $900.000.</b> La tasa media es 11,25 %, aunque la tasa marginal es 20 %. La marginal solo aplica al pedazo de ingreso que cae en ese tramo, no a todo el ingreso.</div>
+<h3>Practica: ¿qué tan regresivo es el IVA?</h3>
+<div class="box calc"><label>Ingreso mensual<input id="ri" type="number" value="1500000"></label><label>Gasto mensual con IVA (19 %)<input id="rg" type="number" value="1300000"></label><div class="res" id="ro"></div><div class="ledger" id="rl"></div></div>
+<div class="cs"><b>Caso: Ana y Beto.</b> Ana gana $1,5 M y gasta $1,3 M en bienes con IVA: paga unos $207.600, el 13,8 % de su ingreso. Beto gana $10 M y gasta $4 M: paga unos $638.700, el 6,4 %. El impuesto es el mismo para todos, pero pesa más en quien gasta casi todo lo que gana. Eso es regresividad. (Supone que todo el gasto está gravado al 19 %.)</div>
+<h3>Incidencia y traslación</h3>
+<p>Quien paga el impuesto formalmente (incidencia formal) no siempre lo soporta (incidencia efectiva). Según Hicks (1946), los oferentes trasladan la carga <b>hacia adelante</b> a los consumidores o <b>hacia atrás</b> a los proveedores, si logran negociar menores precios. En el IVA, el comerciante lo recauda, pero normalmente lo termina pagando el consumidor final.</p>
+</section>
+
+<section id="tributos" hidden><h2>Tributos en Colombia</h2>
+<p>Un <b>impuesto</b> es una carga que se paga sin contraprestación directa. Según el módulo, la ley dictada por el Congreso crea los tributos, y a partir de ella las asambleas y los concejos pueden ejercer su poder de imposición dentro de su jurisdicción.</p>
+<div class="note"><b>Para ampliar:</b> la Constitución (art. 338) exige que los tributos los fijen cuerpos de representación popular, y el art. 363 dice que el sistema tributario se funda en equidad, eficiencia y progresividad.</div>
+<h3>Elementos de la obligación tributaria</h3><div id="t1"></div>
+<div class='cs'><b>Caso: el predial de doña Rosa.</b> Rosa es el sujeto pasivo y el municipio es el sujeto activo. El hecho generador es ser propietaria de un inmueble y la base gravable es el avalúo, digamos $100 M. Si la tarifa fuera 0,5 % (ilustrativa: la fija el concejo dentro de los límites de la ley), el impuesto es $100 M × 0,005 = <b>$500.000</b> al año. El período gravable es de un año.</div>
+<h3>Clasificaciones</h3><div id="t2"></div>
+<h3>Por nivel de gobierno</h3>
+<div class="chips" id="tc"></div><div class="box" id="tn"></div>
+<div class="note"><b>Precisión:</b> el módulo repite el impuesto a vehículos y la sobretasa a la gasolina en dos niveles. Según la normativa que conozco, el de vehículos automotores es departamental (con participación de municipios) y la sobretasa a la gasolina es municipal o distrital. Confírmalo con tu profesor o con la ley antes de un examen.</div>
+</section>
+
+<section id="ingresos" hidden><h2>Gestión de ingresos públicos</h2>
+<p>Los ingresos públicos son los que reciben los entes de gobierno para cumplir funciones asignadas por ley. Clasificarlos permite decidir bien sobre inversiones y obras.</p>
+<h3>Mapa de ingresos</h3><div id="i1"></div>
+<h3>Diferencias que se confunden</h3><div id="i2"></div>
+<h3>Sistema General de Participaciones (SGP)</h3>
+<p>Recursos que la Nación traslada a departamentos, distritos y municipios por mandato de los artículos 356 y 357 de la Constitución. El recorrido:</p>
+<ul><li>Salen de los <b>ingresos corrientes de la Nación</b> (tributarios y no tributarios).</li><li>Salen del Presupuesto General como <b>transferencias corrientes</b> (gasto de funcionamiento de la Nación).</li><li>Llegan al ente territorial como <b>ingreso no tributario</b> (transferencia).</li><li>Se ejecutan como <b>gasto de inversión</b>.</li></ul>
+<p>El módulo cita educación y salud como destinos. Además, la ley incluye agua potable y saneamiento básico y propósito general.</p>
+<div class="note"><b>Actualización:</b> el módulo lista el Fondo Nacional de Regalías entre los fondos especiales. Hoy las regalías se manejan en el Sistema General de Regalías, creado por reforma constitucional en 2011.</div>
+<div class='cs'><b>Caso: el viaje de $2.400 millones.</b> Villa Esperanza recibe $2.400 M del SGP. Para la Nación, ese giro es una transferencia corriente (gasto de funcionamiento). Para el municipio, es un ingreso no tributario. Y cuando el municipio lo usa en el colegio y en el puesto de salud, es gasto de inversión. Un mismo dinero se registra distinto según el presupuesto que lo mire.</div>
+<h3>Practica: clasifica los ingresos de Villa Esperanza</h3>
+<div class="box" id="cl"></div>
+</section>
+
+<section id="gasto" hidden><h2>Gasto público y presupuesto</h2>
+<p>Es el gasto total del Estado para garantizar derechos (educación, salud, seguridad) y proveer bienes y servicios. El <b>gasto público social</b> busca reducir las necesidades básicas insatisfechas y mejorar el bienestar.</p>
+<h3>Clasificación</h3><div id="g1"></div>
+<h3>Reglas del gasto en Colombia</h3><div id="g2"></div>
+<div class='cs'><b>Caso: la nómina que se come el presupuesto.</b> Si Villa Esperanza contrata más personal sin que crezcan sus ingresos corrientes, el funcionamiento sube y queda menos para inversión. Por eso la ley limita el funcionamiento como proporción de los ingresos, y por eso conviene saber cuánto vale mantener la nómina antes de decidir. Con los datos de la calculadora, el funcionamiento es el 37,5 % de los ingresos corrientes: súbelo a 2.500 y mira qué pasa con el balance.</div>
+<h3>Practica: balance de Villa Esperanza (millones)</h3>
+<div class="box calc"><label>Ingresos corrientes<input id="a1" type="number" value="4000"></label><label>Recursos de capital<input id="a2" type="number" value="300"></label><label>Gastos de funcionamiento<input id="a3" type="number" value="1500"></label><label>Inversión<input id="a4" type="number" value="2600"></label><label>Servicio de la deuda<input id="a5" type="number" value="300"></label><div class="res" id="ao"></div><div class="ledger" id="al"></div></div>
+<div class="cs"><b>Caso: el déficit.</b> Con los datos iniciales, Villa Esperanza gasta $4.400 M y recibe $4.300 M: un déficit de $100 M, que viola el principio de equilibrio presupuestal. Opciones: recortar gasto, aumentar recaudo o aplazar inversión. Prestar más empeora el servicio de la deuda del año siguiente.</div>
+<h3>Redistribución e inversión</h3>
+<p>El módulo señala que la inversión es la principal forma de distribuir el ingreso: el Estado invierte en sectores poco atractivos para el capital privado, pero necesarios para el bienestar, como educación, salud y saneamiento ambiental.</p>
+</section>
+
+<section id='comparar' hidden><h2>Comparar autores</h2><p>Elige una pregunta y mira cómo responde cada autor.</p><div class='chips' id='cq'></div><div class='box' id='cr'></div><div class='cs'><b>Caso: el alumbrado de Villa Esperanza.</b> Mil vecinos quieren alumbrar la plaza, pero ninguno quiere pagar primero (Hume). Smith lo vería como una obra pública que ningún individuo costearía solo. Lindahl propondría que los comerciantes, que ganan más con la plaza iluminada, aporten una parte mayor. Wicksell pediría votar a la vez el gasto y el impuesto que lo financia, con amplio acuerdo. Cada autor ofrece una regla distinta para el mismo problema.</div><h3>Practica: ¿quién lo diría?</h3><div class='box' id='wq'></div></section>
+<section id='glosario' hidden><h2>Glosario</h2><input id='gq' type='search' placeholder='Buscar un término…' style='width:100%;font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);margin-bottom:12px'><div id='gt'></div></section>
+<section id='lecturas' hidden><h2>Lecturas recomendadas</h2>
+<div class="note">Si tienes poco tiempo: Ruiz, Páez y Rodríguez (2008) para lo territorial y Cabrillo (2015) para Musgrave.</div>
+<h3>Del módulo</h3>
+<p class="rd"><b>Ruiz, J. S., Páez Pérez, P. N. y Rodríguez Tobo, P. (2008). Finanzas públicas territoriales.</b><small>Ingresos, fondos, SGP y clasificación del gasto.</small></p>
+<p class="rd"><b>Hume, D. (2004). Tratado de la naturaleza humana. El Cid Editor.</b><small>El ejemplo del pantano y el origen de la acción colectiva.</small></p>
+<p class="rd"><b>Cabrillo, F. (2015). La hacienda pública de Richard Musgrave. Civismo.</b><small>Asignación, estabilización y redistribución.</small></p>
+<p class="rd"><b>Fundación Civismo (2015). La economía del bienestar de Pigou.</b><small>Externalidades y fallas del mercado.</small></p>
+<p class="rd"><b>Observatorio Fiscal Javeriana (2020) y Universidad Externado (2020).</b><small>Qué es el gasto público y el gasto social en Colombia.</small></p>
+<h3>Para ampliar</h3>
+<p class="rd"><b>Musgrave, R. y Musgrave, P. Hacienda pública teórica y aplicada.</b><small>El texto clásico de la materia.</small></p>
+<p class="rd"><b>Stiglitz, J. La economía del sector público.</b><small>Fallas de mercado, bienes públicos y tributación.</small></p>
+<p class="rd"><b>Smith, A. (1776). La riqueza de las naciones, libro V.</b><small>Funciones del soberano y principios de los impuestos.</small></p>
+<p class="rd"><b>Samuelson, P. (1954). The pure theory of public expenditure.</b><small>Definición de bien público puro.</small></p>
+<h3>Normas colombianas (consúltalas en fuentes oficiales)</h3>
+<p class="rd"><b>Constitución Política: arts. 150, 154, 338, 345 a 351, 356, 357 y 363.</b><small>Presupuesto, tributos y SGP.</small></p>
+<p class="rd"><b>Decreto 111 de 1996 (Estatuto Orgánico del Presupuesto), Ley 617 de 2000 y Ley 715 de 2001.</b><small>Principios del presupuesto, límites de gasto territorial y reglas del SGP.</small></p>
+</section>
+
+<section id="quiz" hidden><h2>Ponte a prueba</h2><div class="box q" id="qz"></div></section>
+<footer>Resumen de estudio. Revisa el módulo original y las normas vigentes para el detalle.</footer>
+</main>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const T=[["panorama","Panorama"],["pensadores","Pensadores"],["equidad","Equidad y eficiencia"],["tributos","Tributos"],["ingresos","Ingresos"],['gasto','Gasto y presupuesto'],['comparar','Comparar autores'],['glosario','Glosario'],['lecturas','Lecturas'],['quiz','Quiz']];
+const tabs=$("#tabs");T.forEach(([id,n])=>{const b=document.createElement("button");b.textContent=n;b.setAttribute("role","tab");b.dataset.id=id;b.onclick=()=>show(id);tabs.appendChild(b)});
+function show(id){T.forEach(([k])=>{$("#"+k).hidden=k!==id});$$("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.id===id));scrollTo(0,0)}show("panorama");
+const L=(id,a)=>{$("#"+id).innerHTML=a.map(([t,b])=>"<details><summary>"+t+"</summary><p>"+b+"</p></details>").join("")};
+const f=x=>x.toLocaleString("es-CO",{maximumFractionDigits:1});
+L("p1",[["Bienes públicos","No son rivales (que uno los use no impide que otro los use) ni excluyentes (no se puede dejar fuera a quien no paga). Ejemplos: alumbrado, defensa. Como todos quieren usarlos sin pagar (el problema del polizón), se financian con impuestos."],["Externalidades","Efectos de una actividad sobre terceros que el mercado no cobra ni paga, como la contaminación. Pigou propuso corregirlas con impuestos y subvenciones."],["Indivisibilidad","No se puede medir cuánto consume cada persona de la seguridad o la salud pública, por eso no hay un único precio de mercado (Mazzola)."]]);
+L("p2",[["Asignación","Decidir qué bienes provee el sector público y cómo se costean. Es la función clásica."],["Distribución","Redistribuir la renta y la riqueza mediante impuestos y gasto. Enlaza con el estado de bienestar."],["Estabilización","Aportada por los keynesianos: usar ingresos y gastos públicos para corregir la inestabilidad del sector privado."]]);
+const A=[["Hume (1711–1776)","Clásico","Dos vecinos pueden acordar drenar un pantano, pero mil personas no: cada una espera que otras carguen el costo. La intervención del Estado aparece cuando negociar es difícil.","Bienes públicos y problema del polizón."],
+["Smith (1723–1790)","Clásico","«Sistema de libertad natural» con un soberano que defienda la sociedad, proteja de la injusticia y provea obras e instituciones que ningún individuo costearía. Impuestos: igualdad, certidumbre, comodidad y economía recaudadora.","Cobrar de forma simple, cierta y barata."],
+["Mill (1806–1873)","Clásico","Regla general de laissez-faire: el gobierno solo interviene cuando el interés es muy grande. Su primer deber es proteger a la persona y la sociedad.","Debate sobre el tamaño del Estado."],
+["Pantaleoni, Mazzola y Sax","Marginalistas (1880+)","El bienestar se maximiza igualando utilidad marginal y precio, también en bienes públicos. Mazzola: «ley suprema de la economía fiscal», precio igual a utilidad final, con precios diferenciales por la indivisibilidad. Pantaleoni: el parlamento decide impuestos y gasto, y falta un método científico para repartir la carga.","Precios y tarifas diferenciales."],
+["Wicksell","Intercambio voluntario","Quien maximiza su satisfacción no pagaría nada para fines públicos, pues su aporte casi no cambia el servicio; si todos hicieran lo mismo, el Estado cesaría. Complemento: propuso decidir gasto e impuesto juntos, con amplio consenso.","Por qué se necesita coerción tributaria."],
+["Lindahl (1919)","Intercambio voluntario","Que ricos y pobres paguen lo mismo no sería justo. Cada quien aporta según el beneficio que recibe: el «precio Lindahl». Esenciales y no esenciales se aprueban en conjunto.","Impuesto como precio por beneficio."],
+["Pigou","Neoclásico","El Estado puede mejorar la eficiencia corrigiendo fallas del mercado y externalidades con impuestos y subvenciones. Defendió la regla de sacrificio marginal igual. Su visión es paternalista: cree que el Estado puede decidir mejor qué consumir.","Impuestos a la contaminación o al tabaco."],
+["Ramsey (1927)","Tributación óptima","La pérdida de bienestar se minimiza con tasas diferenciales que reduzcan la producción de todos los bienes en la misma proporción. En la práctica, se grava más lo que menos reacciona al precio.","Gravar bienes de demanda poco elástica."],
+["Samuelson (1958)","Economía del bienestar","Las necesidades públicas se ordenan como las privadas: la utilidad marginal del bien público debe igualar la desutilidad marginal de los impuestos. Une los dos lados del presupuesto.","Decidir gasto e impuesto a la vez."],
+["Musgrave","Economía del bienestar","Asignación, distribución y estabilización: las tres funciones del sector público. La redistribución llegó a verse como un estadio avanzado de la política pública, idea discutible pero muy aceptada.","Marco de la política fiscal moderna."],
+["Hicks (1946)","Incidencia","Distingue incidencia formal y efectiva, y traslación hacia adelante y hacia atrás.","Quién paga realmente un impuesto."],
+["Shepard, Meade, Harberger, Solow","Equilibrio general y crecimiento","Modelos para ver cómo se reparte un impuesto entre trabajo, capital y consumidores (Harberger, 1962). Solow (1956): la incidencia depende del ahorro y de las elasticidades de la oferta de factores.","Estudios empíricos de impacto tributario."]];
+const ch=$("#ch");A.forEach((a,k)=>{const b=document.createElement("button");b.textContent=a[0].split(" (")[0];b.onclick=()=>au(k);ch.appendChild(b)});
+function au(k){$$("#ch button").forEach((b,j)=>b.setAttribute("aria-pressed",j===k));const a=A[k];$("#au").innerHTML="<h3></h3><p><i></i></p><p></p><p><b>Hoy se ve en:</b> </p>";const e=$$("#au h3,#au i,#au p");$("#au h3").textContent=a[0];$("#au i").textContent=a[1];$$("#au p")[1].textContent=a[2];$$("#au p")[2].append(a[3])}au(0);
+L("e1",[["Principio del beneficio","Paga quien se beneficia del servicio público (como el precio Lindahl). Es lógico para tasas y tarifas."],["Principio de capacidad de pago","Paga más quien más puede. Sustenta los impuestos progresivos sobre renta y riqueza."]]);
+L("e2",[["Sacrificio absoluto igual","Rico y pobre pierden la misma cantidad de utilidad."],["Sacrificio proporcional igual","Cada uno entrega la misma proporción de su utilidad."],["Sacrificio marginal igual","La utilidad marginal del ingreso después del impuesto es igual para todos. Edgeworth y Pigou lo prefirieron, y implica que quien tiene más sacrifica una proporción mayor."]]);
+L("e3",[["Neutralidad","No alterar el funcionamiento del mercado."],["Certeza","El contribuyente sabe cuánto, cuándo y cómo paga, y el fisco puede contar con el recaudo."],["Evidencia","El contribuyente comprende sus impuestos."],["Eficiencia administrativa","Poco del recaudo se va en costos de recaudar. Lo contrario: administración costosa, carga que frena la actividad, tarifas tan altas que estimulan la evasión y fiscalización excesiva."]]);
+L("e4",[["Progresivo","La tarifa sube con la capacidad económica: quien más tiene, más paga en proporción."],["Proporcional","Todos pagan el mismo porcentaje."],["Regresivo","La tarifa no guarda relación con la capacidad económica y pesa más en los ingresos bajos."]]);
+const B=[[2e6,0],[5e6,.1],[1e7,.2],[Infinity,.3]];
+function gc(){const i=+$("#gi").value||0;let t=0,p=0,m=0;for(const[x,r]of B){if(i>p){t+=(Math.min(i,x)-p)*r;m=r}p=x}$("#go").textContent="Impuesto: $"+f(t);$("#gl").textContent="Tasa media: "+f(i?t/i*100:0)+" %. Tasa marginal: "+f(m*100)+" %."}
+function rc(){const i=+$("#ri").value||0,g=+$("#rg").value||0,v=g*.19/1.19;$("#ro").textContent="IVA pagado: $"+f(Math.round(v));$("#rl").textContent="Equivale al "+f(i?v/i*100:0)+" % del ingreso. Cambia el ingreso y compara.";}
+function ac(){const v=n=>+$("#a"+n).value||0,ic=v(1),ti=ic+v(2),tg=v(3)+v(4)+v(5),b=ti-tg,o=$("#ao");o.className="res "+(b<0?"bad":"ok");o.textContent=(b<0?"Déficit: ":"Superávit: ")+f(Math.abs(b));$("#al").textContent="Ingresos "+f(ti)+" y gastos "+f(tg)+". Ahorro operacional (ingresos corrientes menos funcionamiento): "+f(ic-v(3))+". Funcionamiento es el "+f(ic?v(3)/ic*100:0)+" % de los ingresos corrientes."}
+[["gi",gc],["ri",rc],["rg",rc],["a1",ac],["a2",ac],["a3",ac],["a4",ac],["a5",ac]].forEach(([i,fn])=>$("#"+i).addEventListener("input",fn));gc();rc();ac();
+L("t1",[["Sujeto activo y pasivo","Activo: quien la ley faculta para recibir y administrar el tributo. Pasivo: el contribuyente obligado a pagarlo."],["Hecho generador","Hecho que indica la capacidad contributiva (por ejemplo, tener un inmueble o vender un bien)."],["Base gravable","Valor sobre el que se aplica la tarifa."],["Tarifa","Porcentaje que fija la ley y se aplica a la base. Impuesto = base × tarifa."],["Período gravable y causación","El lapso en que se causa (suele ser un año) y el momento en que nace la obligación de pagar."]]);
+L("t2",[["Directos e indirectos","Directos: recaen sobre la renta, el ingreso o la riqueza y no se trasladan. Indirectos: gravan bienes, servicios y transacciones y se pagan al comprar."],["Personales y reales","Personales: consideran condiciones de la persona (estado civil, hijos). Reales: consideran el origen de la renta sin mirar esas condiciones."],["Progresivos y regresivos","Según cómo varía la tarifa frente a la capacidad económica."]]);
+const N={"Nacionales":"IVA, renta, timbre nacional y contribuciones especiales. El poder ejecutivo los propone y el Congreso los aprueba.","Departamentales":"Impuesto al consumo de licores, cigarrillos y tabaco; impuesto al registro; impuesto a vehículos; sobretasa a la gasolina (según el módulo).","Municipales":"Industria y comercio (ICA), predial unificado, delineación urbana, azar y espectáculos, y vehículos y sobretasa a la gasolina (según el módulo)."};
+Object.keys(N).forEach((k,j)=>{const b=document.createElement("button");b.textContent=k;b.onclick=()=>{$$("#tc button").forEach((x,y)=>x.setAttribute("aria-pressed",y===j));$("#tn").textContent=N[k]};$("#tc").appendChild(b)});$("#tc button").click();
+L("i1",[["Ingresos corrientes tributarios","Impuestos directos e indirectos. Sin contraprestación directa, obligatorios y exigibles de forma coactiva."],["Ingresos corrientes no tributarios","Tasas y tarifas (contraprestación de un servicio), multas, contribuciones, rentas contractuales y transferencias (lo que es gasto en un presupuesto es ingreso en otro)."],["Recursos de capital","Ocasionales, no recurrentes: crédito interno y externo, donaciones, excedentes financieros de establecimientos públicos, rendimientos financieros y diferencia en cambio."],["Fondos especiales","Ingresos creados por ley para un servicio específico, con carácter contable (por ejemplo, Fondo de Salud o de Seguridad y Convivencia)."],["Contribuciones parafiscales","Pagos de usuarios de ciertos organismos para financiar su autonomía: SENA, ICBF, cajas de compensación y seguridad social."],["Establecimientos públicos","Se separan sus rentas propias (ingresos corrientes sin aportes ni transferencias) y sus recursos de capital."]]);
+L("i2",[["Impuesto, tasa y contribución","Impuesto: sin contraprestación directa. Tasa: se paga por un servicio específico y se destina a financiarlo. Contribución: la pagan los beneficiados por una obra."],["Corriente y de capital","Corriente: permanente, nace de la actividad normal. De capital: ocasional."]]);
+const C=[["Impuesto predial",0],["Impuesto de industria y comercio",0],["Transferencia del SGP",1],["Multa de tránsito",1],["Crédito con un banco",2],["Donación de una fundación",2]],O=["Tributario","No tributario","Recurso de capital"];
+$("#cl").innerHTML=C.map((c,k)=>"<div class='row'><span>"+c[0]+"</span><select id='k"+k+"'><option value='-1'>Elige…</option>"+O.map((o,j)=>"<option value='"+j+"'>"+o+"</option>").join("")+"</select></div>").join("")+"<button class='btn' id='kb'>Verificar</button><p id='kr' style='margin-top:10px'></p>";
+$("#kb").onclick=()=>{let s=0;C.forEach((c,k)=>{if(+$("#k"+k).value===c[1])s++});$("#kr").textContent="Aciertos: "+s+" de "+C.length+". Pistas: el predial se cobra sin contraprestación; transferencias y multas son ingresos corrientes que no son impuestos; crédito y donaciones son ocasionales."};
+L("g1",[["Gastos de funcionamiento","Necesarios para el aparato estatal. Incluyen servicios personales (nómina de planta y contratistas), gastos generales (bienes, servicios, impuestos y multas) y transferencias obligadas por ley."],["Gastos de inversión","Buscan el crecimiento económico y el bienestar, y cubrir necesidades básicas insatisfechas. Son la principal forma de redistribución."],["Servicio de la deuda","Cumplir las obligaciones del crédito público con vencimiento en la vigencia. Deuda interna (Nación, entidades, proveedores) y externa (banca, gobiernos, multilaterales)."]]);
+L("g2",[["Propone el Gobierno y aprueba el Congreso","La rama que gasta es el Ejecutivo; el Congreso representa al pueblo (arts. 150, 154 y 200)."],["El gasto se discrimina","No se aprueba de forma global (art. 345 y siguientes)."],["Equilibrio presupuestal","Los gastos no pueden superar los ingresos."],["Controles","Político (Congreso), administrativo (Ministerio de Hacienda y DNP) y fiscal (Contraloría)."],["Para ampliar: principios del presupuesto","El Estatuto Orgánico (Decreto 111 de 1996) incluye, entre otros, anualidad (la vigencia va del 1 de enero al 31 de diciembre), universalidad y planificación."],["Para ampliar: límites territoriales","La Ley 617 de 2000 limita el gasto de funcionamiento según los ingresos de cada entidad, y la Ley 358 de 1997 regula su capacidad de endeudamiento."]]);
+const Q=[["¿Cuáles son las características de un bien público?",["Se vende a precio uniforme","No es rival ni excluyente","Solo lo produce el Estado"],1,"Su uso por uno no impide el de otros y no se puede excluir a quien no paga."],
+["¿Qué ilustra el pantano de Hume?",["Que los vecinos no negocian","Que el Estado debe cobrar más","Que con muchos participantes cada uno espera que otros carguen el costo"],2,"Es el problema de la acción colectiva o del polizón."],
+["¿Cuáles son las tres tareas del soberano según Smith?",["Defensa, justicia y obras e instituciones públicas","Emitir moneda, fijar precios y planear","Redistribuir, estabilizar y endeudarse"],0,"Un Estado mínimo, pero con funciones esenciales."],
+["Las tres funciones de Musgrave son…",["Ingreso, gasto y deuda","Recaudo, control y pago","Asignación, distribución y estabilización"],2,"La estabilización la aportaron los keynesianos."],
+["¿Qué instrumentos propuso Pigou para corregir externalidades?",["Prohibiciones","Impuestos y subvenciones","Más deuda"],1,"Hoy se llaman impuestos pigouvianos."],
+["El principio de capacidad de pago dice que…",["Paga quien se beneficia","Todos pagan igual","Paga más quien más puede"],2,"El de beneficio es el otro principio."],
+["Un impuesto regresivo…",["Pesa proporcionalmente más en los ingresos bajos","Sube con la renta","Solo grava patrimonio"],0,"Por eso el IVA tiene un efecto regresivo."],
+["Con los tramos de la calculadora, ¿cuánto paga quien gana $8.000.000?",["$1.600.000","$900.000","$2.400.000"],1,"3 M × 10 % + 3 M × 20 % = 900.000."],
+["El impuesto predial es un ingreso…",["Tributario","No tributario","De capital"],0,"Es obligatorio y sin contraprestación directa."],
+["Un crédito con un banco es un…",["Ingreso corriente","Recurso de capital","Ingreso parafiscal"],1,"Es ocasional y no recurrente."],
+["En el presupuesto de un municipio, el SGP entra como…",["Ingreso tributario","Recurso de capital","Ingreso no tributario (transferencia)"],2,"Y se ejecuta como gasto de inversión."],
+["Pagar la nómina de planta de la alcaldía es gasto de…",["Funcionamiento","Inversión","Servicio de la deuda"],0,"Son servicios personales asociados a la nómina."],
+["¿Quién propone el gasto público y quién lo aprueba?",["Propone el Congreso y aprueba el Gobierno","Propone el Gobierno y aprueba el Congreso","Propone la Contraloría"],1,"El Ejecutivo es la rama que gasta."],
+["Una tasa se diferencia de un impuesto porque…",["Es voluntaria","La crea el alcalde","Hay contraprestación por un servicio específico"],2,'Se destina a financiar ese mismo servicio.'],
+['Una situación es eficiente en el sentido de Pareto cuando…',['Todos tienen el mismo ingreso','No se puede mejorar a alguien sin empeorar a otro','El Estado no interviene'],1,'Es un criterio de eficiencia, no de equidad.'],
+['¿Por qué Wicksell veía difícil financiar bienes públicos de forma voluntaria?',['Porque el aporte individual casi no cambia el servicio','Porque los bienes públicos son privados','Porque no existen impuestos'],0,'Si todos razonan así, nadie aporta y el Estado cesaría sus funciones.'],
+['Según Ramsey, para minimizar la pérdida de bienestar conviene gravar más…',['Los bienes importados','Los bienes de demanda poco elástica','Los bienes de lujo'],1,'Casi no reaccionan al precio, así que distorsionan menos.'],
+['Un mayorista negocia menores precios al fabricante para absorber un impuesto. Es traslación…',['Hacia adelante','Hacia atrás','Hacia los consumidores'],1,'La carga vuelve hacia el proveedor (Hicks).'],
+['¿Cuál NO es un criterio de Smith para un buen impuesto?',['Certidumbre','Comodidad de pago','Que lo pague solo el más rico'],2,'Smith pide igualdad, certidumbre, comodidad y economía recaudadora.'],
+['Pagas $119.000 por un bien con IVA del 19 %. ¿Cuánto fue IVA?',['$22.610','$11.900','$19.000'],2,'119.000 ÷ 1,19 = 100.000 de precio; el IVA es 19.000.'],
+['Ingresos de $4.300 M y gastos de $4.400 M. El resultado es…',['Superávit de $100 M','Déficit de $100 M','Equilibrio'],1,'Los gastos superan a los ingresos.'],
+['¿Qué artículos de la Constitución sustentan el SGP?',['Arts. 356 y 357','Arts. 150 y 154','Art. 345'],0,'Establecen los recursos que la Nación traslada a las entidades territoriales.'],
+['Los fondos especiales se caracterizan por…',['Ser préstamos del Estado','Ser impuestos municipales','Crearse por ley para un servicio específico y tener carácter contable'],2,'Por ejemplo, el Fondo de Salud.'],
+['Según el módulo, la principal forma de distribución del ingreso es…',['El servicio de la deuda','Las multas','El gasto de inversión'],2,'Invierte en educación, salud y saneamiento, sectores poco atractivos para el capital privado.']];
+const CQ={'¿Qué debe hacer el Estado?':[['Hume','Resolver los problemas de acción colectiva mediante magistrados.'],['Smith','Defensa, justicia y obras e instituciones públicas.'],['Mill','Casi nada, salvo cuando el interés sea muy grande.'],['Pigou','Corregir fallas de mercado y externalidades.'],['Musgrave','Asignar, redistribuir y estabilizar.'],['Samuelson','Proveer bienes públicos hasta que su utilidad marginal iguale la desutilidad de los impuestos.']],'¿Cómo se debe cobrar?':[['Smith','Con igualdad, certidumbre, comodidad y economía.'],['Lindahl','Según el beneficio que cada grupo recibe.'],['Wicksell','Con consentimiento amplio, decidiendo impuesto y gasto juntos.'],['Edgeworth y Pigou','Con sacrificio marginal igual.'],['Ramsey','Con tasas diferenciales que minimicen la pérdida de bienestar.'],['Hicks','Mirando quién soporta realmente el impuesto (incidencia).']],'¿Cómo se decide el gasto?':[['Pantaleoni','Lo decide el parlamento, con un método científico para repartir la carga.'],['Mazzola','Con precios iguales a la utilidad final, diferenciados por consumidor.'],['Samuelson','Uniendo los dos lados del presupuesto.'],['Wicksell','Votando gasto e impuesto en conjunto.'],['Musgrave','Con tres funciones y una mirada también redistributiva.']]};
+Object.keys(CQ).forEach((k,j)=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{$$('#cq button').forEach((x,y)=>x.setAttribute('aria-pressed',y===j));$('#cr').innerHTML='<ul>'+CQ[k].map(r=>'<li><b>'+r[0]+':</b> '+r[1]+'</li>').join('')+'</ul>'};$('#cq').appendChild(b)});$('#cq button').click();
+const WQ=[['«Dos vecinos drenan el pantano; mil no lo logran.»','Hume'],['«El Estado debe defender, hacer justicia y construir obras que nadie costearía solo.»','Smith'],['«Cada quien paga según el beneficio que recibe.»','Lindahl'],['«Las externalidades se corrigen con impuestos y subvenciones.»','Pigou'],['«Hay que decidir juntos el gasto público y el impuesto que lo financia.»','Wicksell'],['«El sector público asigna, distribuye y estabiliza.»','Musgrave']],WN=['Hume','Smith','Lindahl','Pigou','Wicksell','Musgrave','Samuelson','Mill'];
+$('#wq').innerHTML=WQ.map((c,k)=>"<div class='row'><span>"+c[0]+"</span><select id='w"+k+"'><option value=''>Elige…</option>"+WN.map(m=>'<option>'+m+'</option>').join('')+'</select></div>').join('')+"<button class='btn' id='wb'>Verificar</button><p id='wr' style='margin-top:10px'></p>";
+$('#wb').onclick=()=>{let s=0,e=[];WQ.forEach((c,k)=>{if($('#w'+k).value===c[1])s++;else e.push(c[1])});$('#wr').textContent='Aciertos: '+s+' de '+WQ.length+(e.length?'. Repasa a: '+e.join(', ')+'.':'. Excelente.')};
+const G=[['Falla de mercado','Situación en la que el mercado, por sí solo, no asigna bien los recursos: bienes públicos, externalidades, indivisibilidades.'],['Bien público','No rival y no excluyente.'],['Polizón','Quien usa un bien público sin pagarlo (free rider).'],['Externalidad','Efecto sobre terceros que no se refleja en los precios.'],['Utilidad marginal','Satisfacción adicional de consumir una unidad más. Suele decrecer.'],['Eficiencia de Pareto','Situación en la que no se puede mejorar a alguien sin empeorar a otro.'],['Laissez-faire','«Dejar hacer»: mínima intervención del Estado.'],['Elasticidad','Qué tanto cambia la cantidad demandada u ofrecida cuando cambia el precio.'],['Incidencia','Quién soporta finalmente la carga de un impuesto.'],['Traslación','Paso de la carga del impuesto a otros: hacia adelante (al consumidor) o hacia atrás (al proveedor).'],['Tasa media y marginal','Media: impuesto total ÷ ingreso. Marginal: porcentaje sobre el último peso ganado.'],['Hecho generador','Hecho que da origen a la obligación tributaria.'],['Base gravable','Valor sobre el que se aplica la tarifa.'],['Ingresos corrientes','Permanentes, de la actividad normal: tributarios y no tributarios.'],['Recursos de capital','Ocasionales: crédito, donaciones, excedentes financieros, rendimientos.'],['Transferencia','Recursos que pasan de un presupuesto a otro por mandato de ley: gasto en uno, ingreso en otro.'],['Fondo especial','Ingresos creados por ley para un servicio específico.'],['Contribución parafiscal','Pago de usuarios de un sector para financiar entidades como el SENA o el ICBF.'],['SGP','Sistema General de Participaciones: recursos que la Nación gira a las entidades territoriales (arts. 356 y 357).'],['Gasto de funcionamiento','Mantener el aparato estatal: nómina, gastos generales y transferencias de ley.'],['Gasto de inversión','Gasto que busca crecimiento y bienestar, como obras, educación y salud.'],['Servicio de la deuda','Pago de capital e intereses del crédito público.'],['Vigencia fiscal','Año de ejecución del presupuesto (1 de enero a 31 de diciembre).'],['Equilibrio presupuestal','Principio según el cual los gastos no pueden superar los ingresos.'],['Déficit y superávit','Déficit: gastos mayores que ingresos. Superávit: lo contrario.'],['Ahorro operacional','Ingresos corrientes menos gastos de funcionamiento.'],['Necesidades básicas insatisfechas','Carencias en salud, educación, vivienda y servicios que el gasto social busca reducir.']];
+const rg=q=>{$('#gt').innerHTML=G.filter(g=>(g[0]+' '+g[1]).toLowerCase().includes(q.toLowerCase())).map(g=>'<p><b>'+g[0]+':</b> '+g[1]+'</p>').join('')||'<p>Sin resultados.</p>'};rg('');$('#gq').addEventListener('input',e=>rg(e.target.value));
+let n=0,sc=0;
+function qz(){const q=$("#qz");q.innerHTML="";q.dataset.d="";
+if(n>=Q.length){q.innerHTML="<h3>Resultado: "+sc+" de "+Q.length+"</h3><p>"+(sc>=Q.length*.75?"Vas muy bien. Repasa solo lo que fallaste.":"Vuelve a las secciones y reintenta.")+"</p>";const b=document.createElement("button");b.className="btn";b.textContent="Reiniciar quiz";b.onclick=()=>{n=0;sc=0;qz()};q.appendChild(b);return}
+const d=Q[n],h=document.createElement("p");h.innerHTML="<b></b>";h.firstChild.textContent=(n+1)+"/"+Q.length+". "+d[0];q.appendChild(h);
+d[1].forEach((o,k)=>{const b=document.createElement("button");b.className="o";b.textContent=o;b.onclick=()=>{if(q.dataset.d)return;q.dataset.d="1";if(k===d[2])sc++;$$("#qz .o").forEach((x,j)=>{if(j===d[2])x.classList.add("good");else if(j===k)x.classList.add("wrong")});const e=document.createElement("p");e.style.marginTop="12px";e.textContent=(k===d[2]?"Correcto. ":"No. ")+d[3];q.appendChild(e);const nb=document.createElement("button");nb.className="btn";nb.textContent=n+1<Q.length?"Siguiente pregunta":"Ver resultado";nb.onclick=()=>{n++;qz()};q.appendChild(nb)};q.appendChild(b)})}
+qz();
+</script></body></html>
